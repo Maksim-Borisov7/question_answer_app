@@ -1,7 +1,6 @@
 from contextlib import asynccontextmanager
 from app.logs.logger import logger
 from fastapi import FastAPI
-from app.database.db_helper import db_helper
 from app.routes.questions import router as router_questions
 from app.routes.answer import router as router_answer
 
@@ -10,9 +9,6 @@ from app.routes.answer import router as router_answer
 async def lifespan(app: FastAPI):
     try:
         logger.info("Запуск сервера")
-        await db_helper.delete_table()
-        await db_helper.create_table()
-        logger.info("База готова к работе")
         yield
         logger.info("Выключение")
     except ConnectionRefusedError as e:

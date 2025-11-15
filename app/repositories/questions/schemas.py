@@ -17,4 +17,4 @@ class QuestionResponse(BaseModel):
     answers: List[AnswerResponse]
 
     class Config:
-        orm_mode = True
+        from_attributes = True
