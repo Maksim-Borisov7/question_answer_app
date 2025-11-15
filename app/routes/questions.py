@@ -6,7 +6,7 @@ from starlette import status
 from app.database.db_helper import db_helper
 from app.database.models import QuestionModels
 from app.repositories.questions.crud import QuestionRepository
-from app.repositories.questions.schemas import QuestionSchemas, QuestionResponse
+from app.repositories.questions.schemas import QuestionSchemas, QuestionIDResponse, QuestionAllResponse
 
 router = APIRouter(prefix="/questions", tags=["Questions"])
 
@@ -14,7 +14,7 @@ router = APIRouter(prefix="/questions", tags=["Questions"])
 @router.get(
     '/',
     summary='список всех вопросов',
-    response_model=List[QuestionResponse]
+    response_model=List[QuestionAllResponse]
 )
 async def get_all_questions(session: AsyncSession = Depends(db_helper.get_session)
                             ) -> list[QuestionModels]:
@@ -34,7 +34,7 @@ async def add_questions(question_data: Annotated[QuestionSchemas, Depends()],
 @router.get(
     '/{id}',
     summary='получить вопрос и все ответы на него',
-    response_model=QuestionResponse
+    response_model=QuestionIDResponse
 )
 async def get_question(id: int,
                        session: AsyncSession = Depends(db_helper.get_session)

@@ -6570,3 +6570,195 @@ fastapi.exceptions.HTTPException: 404: Ответ не найден
 2025-11-15 12:57:15,385 [INFO] app_logger: Выключение
 2025-11-15 13:43:10,943 [INFO] app_logger: Запуск сервера
 2025-11-15 13:43:17,981 [INFO] app_logger: Выключение
+2025-11-15 17:28:41,714 [INFO] app_logger: Запуск сервера
+2025-11-15 17:29:15,136 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:29:15,335 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:29:42,510 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:29:42,514 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:30:29,368 [INFO] app_logger: Выключение
+2025-11-15 17:30:30,193 [INFO] app_logger: Запуск сервера
+2025-11-15 17:30:36,918 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:30:36,993 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:30:36,996 [ERROR] app_logger: Ошибка при создании сессии: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x0000020344DCACF0>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 413, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 254, in serialize_response
+    raise ResponseValidationError(
+        errors=_normalize_errors(errors), body=response_content
+    )
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x0000020344DCACF0>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+
+2025-11-15 17:30:45,167 [INFO] app_logger: Выключение
+2025-11-15 17:30:46,072 [INFO] app_logger: Запуск сервера
+2025-11-15 17:30:52,418 [INFO] app_logger: Выключение
+2025-11-15 17:30:53,355 [INFO] app_logger: Запуск сервера
+2025-11-15 17:30:58,086 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:30:58,087 [ERROR] app_logger: Ошибка при создании сессии: 
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 391, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 290, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\routes\questions.py", line 21, in get_all_questions
+    return await QuestionRepository.all_questions(session)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\repositories\questions\crud.py", line 25, in all_questions
+    query = select(cls.model).options(selectinload())
+                                      ~~~~~~~~~~~~^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2447, in selectinload
+    return _generate_from_keys(
+        Load.selectinload, keys, False, {"recursion_depth": recursion_depth}
+    )
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\sqlalchemy\orm\strategy_options.py", line 2339, in _generate_from_keys
+    assert lead_element
+           ^^^^^^^^^^^^
+AssertionError
+2025-11-15 17:32:05,508 [INFO] app_logger: Выключение
+2025-11-15 17:32:06,406 [INFO] app_logger: Запуск сервера
+2025-11-15 17:32:10,386 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:32:10,465 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:33:23,062 [INFO] app_logger: Выключение
+2025-11-15 17:33:23,922 [INFO] app_logger: Запуск сервера
+2025-11-15 17:34:02,100 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:34:02,282 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:34:02,285 [ERROR] app_logger: Ошибка при создании сессии: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x00000181B35FAF90>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 413, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 254, in serialize_response
+    raise ResponseValidationError(
+        errors=_normalize_errors(errors), body=response_content
+    )
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x00000181B35FAF90>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+
+2025-11-15 17:35:07,312 [INFO] app_logger: Выключение
+2025-11-15 17:35:08,159 [INFO] app_logger: Запуск сервера
+2025-11-15 17:35:15,540 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:35:15,616 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:35:25,850 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:35:25,859 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:36:37,709 [INFO] app_logger: Выключение
+2025-11-15 17:36:38,661 [INFO] app_logger: Запуск сервера
+2025-11-15 17:36:39,422 [INFO] app_logger: Выключение
+2025-11-15 17:37:23,869 [INFO] app_logger: Запуск сервера
+2025-11-15 17:39:06,428 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:39:06,603 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:39:06,606 [ERROR] app_logger: Ошибка при создании сессии: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AE96660>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 413, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 254, in serialize_response
+    raise ResponseValidationError(
+        errors=_normalize_errors(errors), body=response_content
+    )
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AE96660>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+
+2025-11-15 17:39:12,406 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:39:12,412 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:40:03,312 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:40:03,313 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:40:03,315 [ERROR] app_logger: Ошибка при создании сессии: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AE9E0D0>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 413, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 254, in serialize_response
+    raise ResponseValidationError(
+        errors=_normalize_errors(errors), body=response_content
+    )
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AE9E0D0>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+
+2025-11-15 17:40:09,576 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:40:09,579 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:40:28,601 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:40:28,604 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:40:34,869 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:40:34,870 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:40:34,871 [ERROR] app_logger: Ошибка при создании сессии: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AEC3890>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+Traceback (most recent call last):
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\app\database\db_helper.py", line 29, in get_session
+    yield session
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 111, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 413, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\maxva\PycharmProjects\Im\fastapi_tz\.venv\Lib\site-packages\fastapi\routing.py", line 254, in serialize_response
+    raise ResponseValidationError(
+        errors=_normalize_errors(errors), body=response_content
+    )
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'get_attribute_error', 'loc': ('response', 0, 'answers'), 'msg': "Error extracting attribute: MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)", 'input': <app.database.models.QuestionModels object at 0x000002354AEC3890>, 'ctx': {'error': "MissingGreenlet: greenlet_spawn has not been called; can't call await_only() here. Was IO attempted in an unexpected place? (Background on this error at: https://sqlalche.me/e/20/xd2s)"}}
+
+2025-11-15 17:46:24,748 [INFO] app_logger: Запуск сервера
+2025-11-15 17:46:31,742 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:46:31,819 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:46:41,791 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:46:41,798 [INFO] app_logger: Получен вопрос с ID 1
+2025-11-15 17:49:52,365 [INFO] app_logger: Выключение
+2025-11-15 17:49:53,257 [INFO] app_logger: Запуск сервера
+2025-11-15 17:50:20,161 [INFO] app_logger: Выключение
+2025-11-15 17:50:50,162 [INFO] app_logger: Запуск сервера
+2025-11-15 17:50:58,030 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:50:58,108 [INFO] app_logger: Список вопросов получен
+2025-11-15 17:51:05,373 [DEBUG] app_logger: Создана новая асинхронная сессия базы данных.
+2025-11-15 17:51:05,381 [INFO] app_logger: Получен вопрос с ID 1

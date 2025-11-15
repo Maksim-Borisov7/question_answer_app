@@ -22,7 +22,7 @@ class QuestionRepository:
     async def all_questions(cls, session: AsyncSession) -> list[QuestionModels]:
         """Получение списка всех вопросов"""
         try:
-            query = select(cls.model).options(selectinload(cls.model.answers))
+            query = select(cls.model)
             result = await session.execute(query)
             questions = result.scalars().all()
             logger.info("Список вопросов получен")

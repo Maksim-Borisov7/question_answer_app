@@ -10,11 +10,15 @@ class QuestionSchemas(BaseModel):
     text: str
 
 
-class QuestionResponse(BaseModel):
+class QuestionAllResponse(BaseModel):
     id: int
     text: str
     created_at: datetime
-    answers: List[AnswerResponse]
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class QuestionIDResponse(QuestionAllResponse):
+    answers: List[AnswerResponse]
+
 

@@ -5,7 +5,7 @@ services:
       context: ./
     container_name: fastapi_tz
     ports:
-      - "5050:8000"
+      - "8000:8000"
     environment:
       PG_URL: ${PG_URL}
     env_file:
