@@ -32,7 +32,7 @@ class Database:
             raise
 
 
-db_helper = Database(
+database = Database(
     url=settings.PG_URL,
     echo=settings.echo,
 )

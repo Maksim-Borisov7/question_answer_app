@@ -1,8 +1,8 @@
 from contextlib import asynccontextmanager
 from app.logs.logger import logger
 from fastapi import FastAPI
-from app.routes.questions import router as router_questions
-from app.routes.answer import router as router_answer
+from app.routers.questions import router as router_questions
+from app.routers.answers import router as router_answer
 
 
 @asynccontextmanager

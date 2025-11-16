@@ -3,7 +3,7 @@ from typing import List
 
 from pydantic import BaseModel, ConfigDict
 
-from app.repositories.answer.schemas import AnswerResponse
+from app.schemas.answers import AnswerResponse
 
 
 class QuestionSchemas(BaseModel):

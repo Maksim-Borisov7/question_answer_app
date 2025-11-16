@@ -3,7 +3,7 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: ./
-    container_name: fastapi_tz
+    container_name: question_answer_app
     ports:
       - "8000:8000"
     environment:

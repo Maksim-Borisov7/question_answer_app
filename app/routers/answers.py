@@ -4,9 +4,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from starlette import status
 
 from app.database.models import AnswerModels
-from app.repositories.answer.crud import AnswerRepository
-from app.repositories.answer.schemas import AnswerSchemas, AnswerResponse
-from app.database.db_helper import db_helper
+from app.schemas.answers import AnswerSchemas, AnswerResponse
+from app.database.database import database
+from app.use_cases.answers.create_answer import CreateAnswerUseCase
+from app.use_cases.answers.get_answer import GetAnswerUseCase
+from app.use_cases.answers.delete_answer import DeleteAnswerUseCase
 
 router = APIRouter(tags=["Answers"])
 
@@ -17,9 +19,9 @@ router = APIRouter(tags=["Answers"])
     )
 async def add_answer(id: int,
                      data: Annotated[AnswerSchemas, Depends()],
-                     session: AsyncSession = Depends(db_helper.get_session)
+                     session: AsyncSession = Depends(database.get_session)
                      ) -> dict:
-    return await AnswerRepository.create_answer(id, data, session)
+    return await CreateAnswerUseCase.execute(id, data, session)
 
 
 @router.get(
@@ -28,9 +30,9 @@ async def add_answer(id: int,
     response_model=AnswerResponse
     )
 async def get_answer(id: int,
-                     session: AsyncSession = Depends(db_helper.get_session)
+                     session: AsyncSession = Depends(database.get_session)
                      ) -> AnswerModels:
-    return await AnswerRepository.get_answer_by_id(id, session)
+    return await GetAnswerUseCase.execute(id, session)
 
 
 @router.delete(
@@ -39,6 +41,6 @@ async def get_answer(id: int,
     status_code=status.HTTP_200_OK
     )
 async def delete_answer(id: int,
-                        session: AsyncSession = Depends(db_helper.get_session)
+                        session: AsyncSession = Depends(database.get_session)
                         ) -> dict:
-    return await AnswerRepository.delete_answer_by_id(id, session)
+    return await DeleteAnswerUseCase.execute(id, session)
