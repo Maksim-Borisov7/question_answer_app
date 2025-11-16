@@ -15,7 +15,8 @@
 ## 1) Клонирование репозитория:
 # git clone https://github.com/Maksim-Borisov7/question_answer_app
 ##  2) переходим в папку командой:
-# ```bash cd question_answer_app 
+```bash 
+cd question_answer_app 
 
 
 
