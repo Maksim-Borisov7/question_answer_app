@@ -1,18 +1,35 @@
-# API-сервис для вопросов и ответов: fastapi_tz
-# Тестовое задание на fastapi с использованием postgresql
-# Этапы запуска проекта:
+## API-сервис для вопросов и ответов — question_answer_app
 
-# 1) Клонируем репозиторий с проектом: 
-#  git clone https://github.com/Maksim-Borisov7/fastapi_tz
-#  И переходим в папку командой: cd fastapi_tz
+# Тестовое задание на FastAPI с использованием PostgreSQL, SQLAlchemy, Alembic и Docker.
+# Проект включает API для управления вопросами и ответами.
 
-# 2) Запуск проекта: Создайте файл .env в папке fastapi_tz
-#  Скопируйте содержимое папки .env.example в .env
-#  Далее в терминале прописываем: docker compose up -d
-#  Затем: docker exec -it fastapi_tz alembic upgrade head
+## Стек технологий
 
-# 3) Вставляем в браузер ссылку на swagger: http://localhost:8000/docs
+# -FastAPI
+# -PostgreSQL (Docker)
+# -SQLAlchemy 2.0
+# -Alembic
+# -Docker & Docker Compose
+# -Pydantic v2
 
-# 4) Работа с PostgreSQL: docker exec -it psgr psql -U postgres -d postgres
+## 1) Клонирование репозитория:
+# git clone https://github.com/Maksim-Borisov7/question_answer_app
+##  2) переходим в папку командой:
+# cd question_answer_app
 
-# 5) Остановка проекта: docker compose down
+## 3) Настройка переменных окружения
+# Создайте файл .env в корне проекта
+# Скопируйте содержимое папки .env.example в .env
+
+## 4) Запуск проекта через Docker
+Выполните команду:
+# docker compose up -d
+
+## 5) После запуска контейнеров примените миграции Alembic:
+# docker exec -it question_answer_app alembic upgrade head
+
+## 6) После запуска приложение доступно по адресу:
+# http://localhost:8000/docs
+
+## 7) Остановка контейнеров
+# docker compose down
