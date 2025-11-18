@@ -43,9 +43,6 @@ class AnswerRepository:
 
         Returns:
             AnswerModels: Созданный объект ответа с ID.
-
-        Raises:
-            HTTPException: Если вопрос с указанным ID не найден.
         """
         answer = cls.model(
             question_id=question_id,
@@ -71,9 +68,6 @@ class AnswerRepository:
 
         Returns:
             AnswerModels: Объект ответа.
-
-        Raises:
-            HTTPException: Если ответ не найден.
         """
         query = select(cls.model).where(cls.model.id == answer_id)
         result = await session.execute(query)
@@ -95,9 +89,6 @@ class AnswerRepository:
 
         Returns:
             dict: Сообщение об успешном удалении.
-
-        Raises:
-            HTTPException: Если ответ не найден.
         """
         await session.execute(delete(cls.model).where(cls.model.id == answer_id))
         await session.commit()
